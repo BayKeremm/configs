@@ -1,0 +1,172 @@
+
+/* =============================================================================
+ *
+ * Waybar configuration - Catppuccin Mocha
+ *
+ * Reference: https://github.com/catppuccin/catppuccin
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-warning {
+    70% {
+        color: #cdd6f4; /* text */
+    }
+
+    to {
+        color: #1e1e2e; /* base */
+        background-color: #f9e2af; /* yellow */
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+        color: #cdd6f4; /* text */
+    }
+
+    to {
+        color: #1e1e2e; /* base */
+        background-color: #f38ba8; /* red */
+    }
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#waybar {
+    background: #1e1e2e; /* base */
+    color: #cdd6f4; /* text */
+    font-family: Cantarell, Noto Sans, sans-serif;
+    font-size: 16px;
+}
+
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#custom-disk {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning {
+    color: #f9e2af; /* yellow */
+}
+
+#battery.critical {
+    color: #f38ba8; /* red */
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#clock {
+    font-weight: bold;
+    color: #89b4fa; /* blue */
+}
+
+#cpu.warning {
+    color: #fab387; /* peach */
+}
+
+#cpu.critical {
+    color: #f38ba8; /* red */
+}
+
+#memory.warning {
+    color: #f9e2af; /* yellow */
+}
+
+#memory.critical {
+    color: #f38ba8; /* red */
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#mode {
+    background: #313244; /* surface0 */
+    border-top: 2px solid #89b4fa; /* blue */
+    padding-bottom: 2px;
+}
+
+#network.disconnected {
+    color: #f9e2af; /* yellow */
+}
+
+#pulseaudio {
+    color: #a6e3a1; /* green */
+}
+
+#pulseaudio.muted {
+    color: #f38ba8; /* red */
+}
+
+#custom-spotify {
+    color: #a6e3a1; /* green */
+}
+
+#temperature.critical {
+    color: #f38ba8; /* red */
+}
+
+#workspaces button {
+    border-top: 2px solid transparent;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #6c7086; /* overlay0 */
+}
+
+#workspaces button.focused {
+    border-color: #89b4fa; /* blue */
+    color: #cdd6f4; /* text */
+    background-color: #313244; /* surface0 */
+}
+
+#workspaces button.urgent {
+    border-color: #f38ba8; /* red */
+    color: #f38ba8; /* red */
+}
+
+#window {
+    font-weight: bold;
+    color: #cba6f7; /* mauve */
+}
